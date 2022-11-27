@@ -1,9 +1,9 @@
 <template>
     <div class="log-entry">
-        <div :class="entryContentCls" @click.prevent="toggleOpen()">
+        <div :class="entryContentCls" @click.prevent="() => toggle()">
             <div class="sequence">{{ entry.sequence }}</div>
             <div :class="'spacer-' + level"/>
-            <div class="expand-icon" :class="{expanded: open}" v-if="hasChild">
+            <div class="expand-icon" :class="{expanded: opened}" v-if="hasChild">
                 <i class="mdi mdi-play"/>
             </div>
             <div v-if="entry.type === 'success'" class="message-markup text-success">
@@ -16,8 +16,8 @@
                 {{ entry.message }}
             </div>
         </div>
-        <div class="log-entry-group" v-if="hasChild" v-show="open">
-            <TaskLogEntry v-for="childEntry in entry.logEntries" :entry="childEntry" :level="level + 1" />
+        <div class="log-entry-group" v-if="hasChild" v-show="opened">
+            <TaskLogEntry v-for="childEntry in entry.logEntries" :entry="childEntry" :level="level + 1" ref="childEntries"/>
         </div>
     </div>
 </template>
@@ -39,7 +39,7 @@ export default defineComponent({
     },
     data() {
         return {
-            open: true
+            opened: true
         }
     },
     computed: {
@@ -58,9 +58,27 @@ export default defineComponent({
         }
     },
     methods: {
-        toggleOpen() {
+        close() {
+            this.opened = false
+
             if (this.hasChild) {
-                this.open = !this.open
+                for (const childEntry of this.$refs['childEntries'] as any[]) {
+                    childEntry.close()
+                }
+            }
+        },
+        open() {
+            this.opened = true
+        },
+        toggle() {
+            if (!this.hasChild) {
+                return false
+            }
+
+            if (this.opened) {
+                this.close()
+            } else {
+                this.open()
             }
         }
     }

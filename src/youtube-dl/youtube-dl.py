@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
     # try search youtubeId
     if not youtubeId:
-        if not track.title: raise NameError('Track title is required in no youtube-id provided.')
+        if not track.title: raise NameError('Track title is required if no youtube-id provided.')
         search = YoutubeSearch(track, config)
         result.searchResult = search.search()
         youtubeId = result.searchResult.youtubeId
