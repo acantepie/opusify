@@ -1,0 +1,48 @@
+@import "element";
+
+@import "utilities";
+@import "structure";
+@import '@mdi/font/css/materialdesignicons.css';
+@import 'fonts';
+
+body {
+  display: block !important;
+}
+
+.content {
+  padding: 16px 24px;
+  text-align: center;
+  color: var(--el-text-color-regular);
+}
+
+.alert {
+  text-align: center;
+  padding: 8px 12px;
+  margin-bottom: 1.25rem;
+}
+
+.alert .icon {
+  font-size: 48px;
+}
+
+.alert .message {
+  font-weight: bold;
+  font-size: var(--el-font-size-large);
+}
+
+pre {
+  background-color: var(--el-color-warning-light-9);
+  padding: 8px 12px;
+  margin-bottom: 1.25rem;
+  overflow: auto;
+}
+
+.link {
+  color: var(--el-color-primary);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--el-color-primary-light-3);
+  text-decoration: underline;
+}

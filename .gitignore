@@ -1,0 +1,19 @@
+# Yarn
+/yarn-debug.log*
+/yarn-error.log*
+/node_modules
+
+# electron
+/dist
+/release
+
+# python
+/src/youtube-dl/venv
+/src/youtube-dl/dist
+/src/youtube-dl/__pycache__
+/src/youtube-dl/youtube-dl.spec
+
+# Dev
+/var
+/.idea
+

@@ -1,0 +1,147 @@
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.small {
+  font-size: var(--el-font-size-small);
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.fw-bolder {
+  font-weight: bolder;
+}
+
+.fw-normal {
+  font-weight: normal;
+}
+
+// displays
+$displays: (
+        block: block,
+        flex: flex,
+        inline-block: inline-block,
+        inline: inline
+);
+
+@each $name, $display in $displays {
+  .d-#{$name} {
+    display: $display !important;
+  }
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+// colors
+$colors: (
+        primary: var(--el-color-primary),
+        success: var(--el-color-success),
+        warning: var(--el-color-warning),
+        danger: var(--el-color-danger)
+);
+
+@each $name, $color in $colors {
+  .text-#{$name} {
+    color: $color !important;
+  }
+}
+
+// widths
+
+.w-100 {
+  width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+// spaces
+$spaces: (0: 0, 1: 0.25rem, 2: 0.75rem, 3: 1.25rem, 4: 2rem);
+
+@each $name, $space in $spaces {
+  // margin
+
+  .ms-#{$name} {
+    margin-left: $space !important;
+  }
+
+  .me-#{$name} {
+    margin-right: $space !important;
+  }
+
+  .mb-#{$name} {
+    margin-bottom: $space !important;
+  }
+
+  .mt-#{$name} {
+    margin-top: $space !important;
+  }
+
+  .mx-#{$name} {
+    margin-right: $space !important;
+    margin-left: $space !important;
+  }
+
+  .my-#{$name} {
+    margin-top: $space !important;
+    margin-bottom: $space !important;
+  }
+
+  .m-#{$name} {
+    margin: $space !important;
+  }
+
+  // padding
+
+  .ps-#{$name} {
+    padding-left: $space !important;
+  }
+
+  .pe-#{$name} {
+    padding-right: $space !important;
+  }
+
+  .pb-#{$name} {
+    padding-bottom: $space !important;
+  }
+
+  .pt-#{$name} {
+    padding-top: $space !important;
+  }
+
+  .px-#{$name} {
+    padding-right: $space !important;
+    padding-left: $space !important;
+  }
+
+  .py-#{$name} {
+    padding-top: $space !important;
+    padding-bottom: $space !important;
+  }
+
+  .p-#{$name} {
+    padding: $space !important;
+  }
+}
+
+$mdi-font-sizes: 12px, 14px, 16px, 18px, 20px, 22px, 24px, 26px, 28px, 30px, 32px;
+
+@each $size in $mdi-font-sizes {
+  .mdi-#{$size}.mdi-set, .mdi-#{$size}.mdi:before {
+    font-size: $size;
+  }
+}
+
+.mdi-bold:before {
+  font-weight: bold;
+
+}

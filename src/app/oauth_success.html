@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+        <title>Spotify Oauth</title>
+        <script type="module" src="oauth.ts"></script>
+    </head>
+    <body style="display: none">
+        <div class="content">
+            <div class="alert">
+                <i class="mdi mdi-check-circle-outline text-success icon"></i>
+                <div class="message">You are successfully authenticated.</div>
+            </div>
+
+            <a href onclick="window.close()" class="link">
+                <i class="mdi mdi-exit-to-app"></i> Back to app
+            </a>
+        </div>
+    </body>
+</html>

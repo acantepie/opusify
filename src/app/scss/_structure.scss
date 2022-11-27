@@ -1,0 +1,25 @@
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  margin: 0;
+  max-height: 100%;
+  font-size: var(--el-font-size-base);
+}
+
+.app-container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--el-text-color-regular)
+
+}
+
+h1 {
+  font-size: var(--el-font-size-extra-large);
+}
+
+h2 {
+  font-size: var(--el-font-size-large);
+}

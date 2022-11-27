@@ -1,0 +1,70 @@
+/**
+ * @see https://www.electron.build/configuration/configuration
+ */
+{
+  "$schema": "http://json.schemastore.org/electron-builder",
+  "appId": "opusify",
+  "asar": true,
+  "directories": {
+    "output": "release/${version}"
+  },
+  "files": [
+    "dist",
+    {
+      "from": "src/electron/assets",
+      "to": "dist/electron/assets",
+      "filter": "**/*"
+    }
+  ],
+  "mac": {
+    "artifactName": "${productName}_${version}.${ext}",
+    "target": [
+      "dmg"
+    ]
+  },
+  "win": {
+    "icon": "build/icon.ico",
+    "extraFiles": [
+      {
+        from: "dist/youtube-dl/windows",
+        to: "youtube-dl"
+      },
+    ],
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      },
+    ],
+    "artifactName": "${productName}_${version}.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": false
+  },
+  "linux": {
+    "category": "Audio",
+    "icon": "./build",
+    "extraFiles": [
+      {
+        from: "dist/youtube-dl/linux",
+        to: "youtube-dl"
+      },
+    ],
+    "target": [
+      {
+        "target": "snap"
+      },
+      {
+        "target": "AppImage",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+  }
+}

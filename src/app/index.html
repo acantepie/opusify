@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+        <style>
+            #app--loader {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 20;
+                background-color: white;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #app--loader .icon {
+                position: relative;
+                margin: auto;
+                width: 256px;
+                height: 256px;
+            }
+
+            #app--loader .icon svg {
+                height: 128px;
+                width: 128px;
+
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+
+            #app--loader .icon .bounce {
+                width: 256px;
+                height: 256px;
+
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+
+                background-color: #1ed760;
+                border-radius: 100%;
+                animation: sk-scaleout 1.0s infinite ease-in-out;
+            }
+
+            #app--loader h1 {
+                font-size: 2.5em;
+                color: #606266;
+            }
+
+            @keyframes sk-scaleout {
+                0% {
+                    transform: scale(0);
+                }
+
+                100% {
+                    transform: scale(1.0);
+                    opacity: 0;
+                }
+            }
+        </style>
+        <title>Opusify</title>
+    </head>
+
+    <body>
+        <div id="app--loader">
+            <div class="icon">
+                <div class="bounce"></div>
+                <svg viewBox="0 0 256 256" width="256" height="256" version="1.1" id="svg24" sodipodi:docname="logo.svg" xml:space="preserve" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14, custom)" inkscape:export-filename="logo.png" inkscape:export-xdpi="12" inkscape:export-ydpi="12" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs28"><linearGradient id="linearGradient6064" inkscape:swatch="solid"><stop style="stop-color:#000000;stop-opacity:1;" offset="0" id="stop6062" /></linearGradient></defs><sodipodi:namedview id="namedview26" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" showgrid="true" inkscape:zoom="0.35355339" inkscape:cx="36.769553" inkscape:cy="-222.03153" inkscape:window-width="960" inkscape:window-height="1020" inkscape:window-x="960" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:current-layer="svg24"><inkscape:grid type="xygrid" id="grid134" originx="0" originy="0" /></sodipodi:namedview><path fill="#ed3675" d="m 128,5.55149 c -67.628307,0 -122.44851,54.820185 -122.44851,122.4485 0,67.62831 54.820203,122.44852 122.44851,122.44852 67.62832,0 122.44851,-54.82021 122.44851,-122.44852 C 250.44851,60.371675 195.62832,5.5514882 128,5.55149 Z" id="path9" style="fill:#1ed760;fill-opacity:1;stroke-width:12.2448" /><linearGradient id="thMIbMD7~VnYoyixFJ5D6a" x1="30" x2="41" y1="8" y2="8" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.5435279,0,0,0.86024798,13.694163,4.7515686)"><stop offset="0" stop-color="#bd1949" id="stop11" style="stop-color:#1db954;stop-opacity:1;" /><stop offset="0.108" stop-color="#c31a4b" id="stop13" style="stop-color:#1cba54;stop-opacity:1;" /><stop offset="0.38" stop-color="#ca1b4d" id="stop15" style="stop-color:#12a648;stop-opacity:1;" /><stop offset="1" stop-color="#cc1b4e" id="stop17" style="stop-color:#0a5c28;stop-opacity:1;" /></linearGradient><g id="g4971" transform="matrix(1.3070035,0,0,1.3070035,-39.296448,-15.483859)"><path d="m 184.74014,113.90857 -43.68505,0.14942 V 87.66766 c 0,0 -0.11206,-10.888579 -12.1586,-10.888579 -11.1127,0 -11.93448,10.888579 -11.93448,10.888579 l -0.0747,26.409 H 71.25986 l 56.66543,69.01081 z" id="path4851" style="stroke-width:0.186768" /><path d="m 116.02817,48.054152 c 0.056,-6.443498 5.34156,-11.635651 11.80374,-11.57962 6.46217,0.05603 11.65433,5.32289 11.57962,11.785065 -0.056,6.443498 -5.34157,11.635651 -11.80374,11.57962 -6.36879,-0.05603 -11.52359,-5.210829 -11.57962,-11.57962 z" id="path4853" style="stroke-width:0.186768" /></g></svg>
+            </div>
+        </div>
+        <div id="app"></div>
+        <script type="module" src="index.ts"></script>
+    </body>
+</html>
