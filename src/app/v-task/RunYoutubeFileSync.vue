@@ -35,6 +35,7 @@
                                             </el-button>
                                         </template>
                                     </el-input>
+                                    <div class="form-help">You can download <a href @click.prevent="$openUrl('https://ffmpeg.org/download.html')">ffmpeg</a>.</div>
                                 </el-form-item>
                             </div>
                         </div>
