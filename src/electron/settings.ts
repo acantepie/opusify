@@ -1,7 +1,7 @@
 export const settings = {
     spotify: {
         // protect my spotify client id from russian hacker :)
-        client_id: Buffer.from('MTQ0Y2UzNDI4MzFiNDZlZTljYjFjOGJjODI0OGNlODI=', 'base64').toString()
+        client_id: Buffer.from('MGIwYWNkN2Q3MDlkNDAzMzkxMTBlYzBiODk0ODhjM2U=', 'base64').toString()
     },
     audio_codec : [
         {

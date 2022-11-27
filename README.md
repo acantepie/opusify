@@ -10,11 +10,24 @@
 
 To download, please visit https://github.com/acantepie/opusify/releases
 
+You must install `ffmpeg` on your system : [download ffmpeg](https://ffmpeg.org/download.html)
+
+Only two platforms are supported :
+ - linux
+ - windows
+
+## Notes
+
+All music is downloaded from Youtube. The quality of the audio files will be 128Kpbs.
+
+For Now, it is on **alpha release**. 
+
+
 ## Features
-- Synchronize your Music Library with Spotify (private/public/liked playlists and liked tracks)
-- Download your Library on your hard drive from Youtube
-- Tag your Audio files
+- Download all your spotify music : public / private playlists and liked tracks
+- Add metadata on your audio files
 - Convert Audio files in various format (opus, aac, mp3, flac)
+
 
 ## Powered by
 
