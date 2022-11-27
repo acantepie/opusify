@@ -4,6 +4,8 @@
     <p>Download on your computer all your Spotify music.</p>
 </div>
 
+[demo.webm](https://user-images.githubusercontent.com/12775815/204139325-97169df9-c081-4dfd-8069-9d7a23b863f6.webm)
+
 ## Download
 
 To download, please visit https://github.com/acantepie/opusify/releases
