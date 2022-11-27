@@ -35,7 +35,10 @@
                                             </el-button>
                                         </template>
                                     </el-input>
-                                    <div class="form-help">You can download <a href @click.prevent="$openUrl('https://ffmpeg.org/download.html')">ffmpeg</a>.</div>
+                                    <div class="form-help">
+                                        FFmpeg is required to transcode your audio files. You can download latest version
+                                        <a href="#" @click.prevent="$openUrl('https://ffmpeg.org/download.html')" class="text-primary">here</a>
+                                    </div>
                                 </el-form-item>
                             </div>
                         </div>
@@ -184,6 +187,10 @@ export default defineComponent({
 <style lang="scss">
 .form-card {
     margin-bottom: 1rem;
+}
+
+.form-help {
+    color: var(--el-text-color-regular);
 }
 
 .form-title {

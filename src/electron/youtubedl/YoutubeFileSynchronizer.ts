@@ -12,6 +12,7 @@ import Track from "../dto/Track";
 import {AudioCodec} from "../dto/AudioCodec";
 import * as fs from "fs";
 import {logger} from "../Logger";
+import FFmpeg from "./FFmpeg";
 
 const DEBUG = false
 const LIBRARY_DIRNAME = 'library'
@@ -20,12 +21,14 @@ export default class YoutubeFileSynchronizer {
     private readonly logger: TaskLogger
     private readonly config: TaskConfig
     private readonly signal: AbortSignal
+    private readonly ffmpeg: FFmpeg
     private filePathMap: Map<string, Map<string, true>>
 
     constructor(logger: TaskLogger, config: TaskConfig, signal: AbortSignal) {
         this.logger = logger
         this.config = config
         this.signal = signal
+        this.ffmpeg = new FFmpeg(config.ffmpegBinary)
         this.filePathMap = new Map()
     }
 
@@ -36,6 +39,7 @@ export default class YoutubeFileSynchronizer {
         this.logger.info(`Output dir : ${this.config.outputDir}`)
         this.logger.info(`Audio codec : ${this.config.audioCodec}`)
         this.logger.info(`Metadata : ${this.config.metadataMode}`)
+        this.logger.info(`FFmpeg version : ${this.ffmpeg.getVersion()}`)
 
         const library = storage.getLibrary()
 
@@ -97,7 +101,7 @@ export default class YoutubeFileSynchronizer {
             youtubedl.outputTmpl = trackPath
             youtubedl.cacheDir = join(process.env.USER_DIR, '/cache')
             youtubedl.debug = DEBUG
-            youtubedl.ffmpegBinary = this.config.ffmpegBinary
+            youtubedl.ffmpeg = this.ffmpeg
 
             if (this.config.metadataMode === 'youtube') {
                 youtubedl.metadata = 'youtube'
@@ -170,7 +174,7 @@ export default class YoutubeFileSynchronizer {
 
     // Throw an error if something is invalid
     private checkConfig() {
-        // binary (juste in case)
+        // youtube-dl binary (juste in case)
         if (!process.env.YOUTUBE_DL_BINARY || !fs.existsSync(process.env.YOUTUBE_DL_BINARY)) {
             throw new Error(`Binary path "${process.env.YOUTUBE_DL_BINARY}" is invalid.`)
         }
@@ -204,16 +208,6 @@ export default class YoutubeFileSynchronizer {
         if (!outFileStat.isDirectory()) {
             throw new Error('Output directory is not a valid directory.')
         }
-
-        // FFmpeg binary
-        if (!this.config.ffmpegBinary) {
-            throw new Error('Not FFmpeg location specified.')
-        }
-
-        if (!fs.existsSync(this.config.ffmpegBinary)) {
-            throw new Error('FFmpeg location doesn\'t exist.')
-        }
-
     }
 
     private _libraryPath(): string
