@@ -1,7 +1,6 @@
 import {ChildProcess, spawn} from "child_process";
 import Track from "../dto/Track";
 import {logger} from "../Logger";
-import FFmpeg from "./FFmpeg";
 
 type DoneCallback = (code: number, stdout: string, stderr: string) => void
 
@@ -38,7 +37,7 @@ export default class Youtubedl {
 
     private _metadata: string|null = null
 
-    private _ffmpeg: FFmpeg|null = null;
+    private _ffmpegBinary: string
     private _debug: boolean = false
 
     private _stdout: string = ''
@@ -87,8 +86,8 @@ export default class Youtubedl {
         this._debug = value;
     }
 
-    set ffmpeg(value: FFmpeg | null) {
-        this._ffmpeg = value;
+    set ffmpegBinary(value: string) {
+        this._ffmpegBinary = value;
     }
 
     set onSuccess(value: DoneCallback | null) {
@@ -180,8 +179,8 @@ export default class Youtubedl {
             args.push('--debug')
         }
 
-        if (this._ffmpeg) {
-            args.push(`--ffmpeg-location=${this.ffmpeg.binary}`)
+        if (this._ffmpegBinary) {
+            args.push(`--ffmpeg-location=${this._ffmpegBinary}`)
         }
 
         return args
@@ -228,8 +227,8 @@ export default class Youtubedl {
     }
 
     private checkArgs(): void {
-        if (null === this._ffmpeg) {
-            throw new Error('Option "ffmpeg" is required')
+        if (null === this._ffmpegBinary) {
+            throw new Error('Option "ffmpegBinary" is required')
         }
 
         if (null === this._track) {

@@ -101,7 +101,7 @@ export default class YoutubeFileSynchronizer {
             youtubedl.outputTmpl = trackPath
             youtubedl.cacheDir = join(process.env.USER_DIR, '/cache')
             youtubedl.debug = DEBUG
-            youtubedl.ffmpeg = this.ffmpeg
+            youtubedl.ffmpegBinary = this.ffmpeg.binary
 
             if (this.config.metadataMode === 'youtube') {
                 youtubedl.metadata = 'youtube'
